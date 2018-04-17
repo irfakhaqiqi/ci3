@@ -13,12 +13,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
-<div class="btn-default"><h1><b>Home!</b></h1></div>
 <body>
-	<div class="jumbotron">
-		<h1>Home!</h1>
+	<nav class="navbar navbar-default">
+      <div class="container-fluid">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="">WHO!!!</a>
 	</div>
-
+	<ul class="nav navbar-nav">
+		<li><a href="<?php echo base_url(); ?>">Home</a></li>
+		<li><a href="<?php echo base_url('index.php\Welcome\about'); ?>">About</a></li>
+		<li><a href="<?php echo base_url('index.php\blog'); ?>">Blog</a></li> 
+	</ul>
+   </div>
+</nav>
+	<br></br>
+<div class="jumbotron">
+		
+	</div>
 </body>
 </html>

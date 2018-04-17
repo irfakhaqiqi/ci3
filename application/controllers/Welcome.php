@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('home');
 	}
 	public function news()
 	{
@@ -32,10 +32,14 @@ class Welcome extends CI_Controller {
 	}
 	public function about()
 	{
-		$this->load->view('about');
+		$this->load->view('news');
 	}
 	public function home()
 	{
 		$this->load->view('home');
+	}
+
+	public function blog() {
+		$this->load->view('postlist');	
 	}
 }
