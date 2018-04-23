@@ -12,10 +12,19 @@ class Data_model extends CI_Model {
 		return $this->db->get('$table');
 	}
 
-	public function setData($table, $data){
-		return $this->db->insert($table, $data);
+	public function setData($table, $data, $id = 0){
+		if($id == 0){
+			return $this->db->insert($table, $data);
+		}else{
+			$this->db->where('id', $data['id']);
+			return $this->db->update($table, $data);
+		}	
 	}
 
+	public function delete($table, $id){
+		$this->db->where('id', $id);
+		return $this->db->delete($table);
+	}
 }
 
 /* End of file data_model.php */
