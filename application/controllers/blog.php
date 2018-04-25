@@ -14,7 +14,11 @@ class Blog extends CI_Controller {
 	{
 		$this->load->model('blog_model');
 
-    	$this->form_validation->set_rules('judul', 'Judul', 'trim|required');
+    	$this->form_validation->set_rules('judul', 'Judul', 'trim|required|is_unique',
+            array(
+                'required'      => 'isi %s dulu bosque.',
+                'is_unique'     => 'judul ' .$this->input->post('title'). ' sudah ada bosque.'            
+            ));
 
     	if ($this->form_validation->run()==FALSE) {
     		$this->load->view('input_post');
@@ -27,7 +31,11 @@ class Blog extends CI_Controller {
 
 	 public function update($id) {
     	$this->load->model('blog_model');
-    	$this->form_validation->set_rules('judul', 'Judul', 'trim|required');
+    	$this->form_validation->set_rules('judul', 'Judul', 'trim|required|min_length[8]',
+            array(
+                'required'       => 'isi %s lah bosque.',
+                'min_length'     => 'isi %s kurang panjang bosque.',            
+            ));
 
     	$data['post']=$this->blog_model->getPost($id);
 
