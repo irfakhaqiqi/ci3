@@ -15,7 +15,7 @@
    <nav class="navbar navbar-default">
       <div class="container-fluid">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="">WEB Framework</a>
+		<a class="navbar-brand" href="">WHO!!!</a>
 	</div>
 	<ul class="nav navbar-nav">
 		<li><a href="<?php echo base_url(); ?>">Home</a></li>
@@ -25,19 +25,25 @@
 
 
 </nav>
-<p align="right">
-<a href="<?php echo base_url('index.php\blog\create'); ?>" class="btn btn-primary">Create Post</a>
-<a href="<?php echo base_url('index.php\category'); ?>" class="btn btn-primary">Category</a>
-</p>
+<a href="<?php echo base_url('index.php\category\create'); ?>" class="btn btn-primary">Create Category</a>
+
 <div class="container">
-	<?php foreach ($postlist as $row) { ?>
-		<h1><?php echo $row['judul']; ?></h1><br>
-		Kategori : <?php echo $row['cat_name']; ?><br>
-		<a href="<?php echo base_url('index.php/blog/update/'.$row['idp']); ?>">Edit</a>  <a href="<?php echo base_url('index.php/blog/delete/'.$row['idp']); ?>">Delete</a><br><br>
-		<p><?php echo $row['konten']; ?></p>
-		<br>
-		<br>
-	<?php } ?>
+	<table class="table table-hover">
+				<th>Nama Kategori</th>
+				<th>Deskripsi</th>
+				<th>action</th>
+		<tbody>
+			<?php foreach ($categorylist as $row) { ?>
+			<?php $row['cat_name']; ?>
+			<tr>
+				<td><?php echo $row['cat_name']; ?></td>
+				<td><?php echo $row['cat_description']; ?></td>
+				<td><a class="btn btn-warning" href="<?php echo base_url('index.php/category/update/'.$row['id']); ?>">Edit</a>  <a class="btn btn-warning" href="<?php echo base_url('index.php/category/delete/'.$row['id']); ?>">Delete</a></td>
+			</tr>
+			<?php } ?>
+		</tbody>
+	</table>
+	
 </div>
 </body>
 </html>

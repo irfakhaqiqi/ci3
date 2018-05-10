@@ -18,43 +18,51 @@
  		<!--[if lt IE 9]>
  			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
  			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
- 			<![endif]-->
- 		</head>
- 		<body>
- 			<div class="container-fluid">
- 				<div class="col-md-4"></div>
- 				<div class="col-md-4">
- 					<h1>Tambah postingan</h1>
- 					<?php 
- 						echo form_open('blog/create'); 
- 						echo validation_errors();
+ 		<![endif]-->
+ 	</head>
+ 	<body>
+ 		<div class="container-fluid">
+ 			<div class="col-md-4"></div>
+ 			<div class="col-md-4">
+ 				<h1>Tambah postingan</h1>
+ 				<?php 
+ 				echo form_open('blog/create'); 
+ 				echo validation_errors();
 
- 					?>
+ 				?>
 
- 					<div class="form-group">
- 						<label>Judul<font color="red">*</font></label>
- 						<input type="text" class="form-control" id="judul" name="judul" placeholder="Input field">
- 					</div>
- 					<div class="form-group">
- 						<label>Isi Konten</label>
- 						<input type="text" class="form-control" id="konten" name="konten" size="255" placeholder="Input field">
- 					</div>
- 					
- 					<font color="red"><i>* Wajib diisi</i></font>
-					<br>
-					<br>
-
- 					<button type="submit" class="btn btn-primary">Submit</button>
- 					<?php echo form_close(); ?>
+ 				<div class="form-group">
+ 					<label>Judul<font color="red">*</font></label>
+ 					<input type="text" class="form-control" id="judul" name="judul" placeholder="Input field">
  				</div>
- 				<div class="col-md-4"></div>
- 			</div>
+ 				<div class="form-group">
+ 					<label>Isi Konten</label>
+ 					<input type="text" class="form-control" id="konten" name="konten" size="255" placeholder="Input field">
+ 				</div>
+ 				<div class="form-group">
+ 					<label>Kategori</label>
+ 					<select class="form-control" name="category">
+ 						<?php foreach ($categorylist as $row) { ?>
+ 						<option value="<?php echo $row['id'] ?>"><?php echo $row['cat_name']; ?></option>
+ 						<?php } ?>
+ 					</select>
+ 				</div>
 
- 			<!-- jQuery -->
- 			<script src="//code.jquery.com/jquery.js"></script>
- 			<!-- Bootstrap JavaScript -->
- 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
- 			<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
- 			<script src="Hello World"></script>
- 		</body>
- 		</html>
+ 				<font color="red"><i>* Wajib diisi</i></font>
+ 				<br>
+ 				<br>
+
+ 				<button type="submit" class="btn btn-primary">Submit</button>
+ 				<?php echo form_close(); ?>
+ 			</div>
+ 			<div class="col-md-4"></div>
+ 		</div>
+
+ 		<!-- jQuery -->
+ 		<script src="//code.jquery.com/jquery.js"></script>
+ 		<!-- Bootstrap JavaScript -->
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+ 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+ 		<script src="Hello World"></script>
+ 	</body>
+ 	</html>

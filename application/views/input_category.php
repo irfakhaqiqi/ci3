@@ -24,30 +24,21 @@
  			<div class="container-fluid">
  				<div class="col-md-4"></div>
  				<div class="col-md-4">
- 					<h1>Edit postingan</h1>
+ 					<h1>Tambah postingan</h1>
  					<?php 
- 						echo form_open('blog/update/'.$this->uri->segment(3)); 
+ 						echo form_open('category/create'); 
  						echo validation_errors();
 
  					?>
 
  					<div class="form-group">
- 						<label>Judul<font color="red">*</font></label>
- 						<input type="text" class="form-control" id="judul" name="judul" placeholder="Input field" value="<?php echo $post[0]->judul ?>">
+ 						<label>Nama Kategori<font color="red">*</font></label>
+ 						<input type="text" class="form-control" id="cat_name" name="cat_name" placeholder="Input field">
  					</div>
  					<div class="form-group">
- 						<label>Isi Konten</label>
- 						<input type="text" class="form-control" id="konten" name="konten" size="255" placeholder="Input field" value="<?php echo $post[0]->konten ?>">
+ 						<label>Deskripsi</label>
+ 						<input type="text" class="form-control" id="cat_description" name="cat_description" size="255" placeholder="Input field">
  					</div>
- 					<div class="form-group">
- 						<label>Kategori</label>
- 						<select class="form-control" name="category">
- 							<?php foreach ($categorylist as $row) { ?>
- 							<option value="<?php echo $row['id'] ?>"><?php echo $row['cat_name']; ?></option>
- 							<?php } ?>
- 						</select>
- 					</div>
-
  					
  					<font color="red"><i>* Wajib diisi</i></font>
 					<br>
