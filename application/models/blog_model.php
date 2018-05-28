@@ -13,9 +13,32 @@ class Blog_model extends CI_Model
         
     }
 
-    public function getPostList () {
-    	$query = $this->db->query("SELECT p.id AS idp, c.id AS idc, p.id_category, p.judul, p.konten, c.cat_name, c.cat_description FROM post AS p INNER JOIN category AS c ON p.id_category = c.id");
-		return $query->result_array();
+   public function getPostList( $limit = FALSE, $offset = FALSE ) 
+    {
+        // Jika variable $limit ada pada parameter maka kita limit query-nya
+        if ( $limit ) {
+            $this->db->limit($limit, $offset);
+        }
+        // Query Manual
+        // $query = $this->db->query('
+        //      SELECT * FROM blogs
+        //  ');
+
+        // Memakai Query Builder
+
+        // Inner Join dengan table Categories
+        $this->db->join('category', 'category.id = post.id_category');
+        
+        $query = $this->db->get('post');
+
+        // Return dalam bentuk object
+        return $query->result();
+    }
+
+        public function get_total() 
+    {
+        // Dapatkan jumlah total artikel
+        return $this->db->count_all("post");
     }
 
     public function insertPost() {
@@ -29,9 +52,16 @@ class Blog_model extends CI_Model
     }
 
     public function getPost($id) {
-    	$this->db->where('id', $id);
+    	$this->db->where('id_post', $id);
     	$query = $this->db->get('post');
     	return $query->result();
+    }
+
+    public function readPost($id) {
+        $this->db->join('category', 'category.id = post.id_category');
+        $this->db->where('id_post', $id);
+        $query = $this->db->get('post');
+        return $query->row();   
     }
 
     public function updateById($id) {
@@ -41,13 +71,24 @@ class Blog_model extends CI_Model
     		'konten' => $this->input->post('konten'),
     		);
 
-    	$this->db->where('id', $id);
+    	$this->db->where('id_post', $id);
     	$this->db->update('post', $data);
     }
 
     public function deletePost($id) {
-    	$this->db->where('id', $id);
+    	$this->db->where('id_post', $id);
     	$this->db->delete('post');
     }
+
+    public function get_all_artikel() 
+    {
+        $this->db->join('category', 'category.id = post.id_category');
+      
+       $query = $this->db->get('post');
+
+       // Return dalam bentuk object
+       return $query->result();
+    }
+
 }
  ?>

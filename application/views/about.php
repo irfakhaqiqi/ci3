@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<ul class="nav navbar-nav">
 		<li><a href="<?php echo base_url(); ?>">Home</a></li>
 		<li><a href="<?php echo base_url('index.php\Welcome\about'); ?>">About</a></li>
-		<li><a href="<?php echo base_url('index.php\blog'); ?>">Blog</a></li> 
+		<li><a href="<?php echo base_url('index.php\blog'); ?>">Artikel</a></li> 
 	</ul>
    </div>
 </nav>
