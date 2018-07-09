@@ -19,6 +19,8 @@ class User extends CI_Controller{
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		$this->form_validation->set_rules('password2', 'Konfirmasi Password', 
 			'matches[password]');
+		$this->form_validation->set_rules('level', 'Level', 
+			'required');
 		if($this->form_validation->run() === FALSE){
 			$this->load->view('navbar');
 			$this->load->view('register');
@@ -50,12 +52,14 @@ class User extends CI_Controller{
 			$password = md5($this->input->post('password'));
 
 			$user_id = $this->user_model->login($username, $password);
+			$level = $this->user_model->level($username, $password);
 
 			if($user_id){
 				$user_data = array(
 					'id_user' => $user_id,
 					'username' => $username,
-					'logged_in' => true
+					'logged_in' => true,
+					'level' => $level,
 				);
 				$this->session->set_userdata($user_data);
 				$this->session->set_flashdata('user_loggedin', 'You are now logged in');
@@ -74,6 +78,7 @@ class User extends CI_Controller{
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('id_user');
         $this->session->unset_userdata('username');
+        $this->session->unset_userdata('level');
 
         // Set message
         $this->session->set_flashdata('user_loggedout', 'Anda sudah log out');
