@@ -36,6 +36,13 @@
 					<label>Konfirmasi Password</label>
 					<input type="password" class="form-control" name="password2" placeholder="Konfirmasi Password">
 				</div>
+				<div class="form-group">
+					<label>Konfirmasi Password</label><br>
+					<select name="level">
+						<option value="vip">VIP</option>
+						<option value="ekonomi">EKONOMI</option>
+					</select>
+				</div>
 				<button type="submit" class="btn btn-primary btn-block">Daftar</button>
 				<?php echo form_close(); ?>		
 			</div>

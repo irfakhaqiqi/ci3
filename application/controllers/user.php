@@ -88,6 +88,10 @@ class User extends CI_Controller{
 
 
 	}
+
+	public function error_akses() {
+		$this->load->view('akses_ditolak');
+	}
 }
 
 ?>

@@ -1,4 +1,14 @@
 
+<?php
+
+if(!$this->session->userdata('logged_in')) {
+	redirect('user/login','refresh');
+} 
+
+if($this->session->userdata('level') == 'ekonomi') {
+	redirect('user/error_akses','refresh');
+} 
+?>
 <html>
 <head>
 	<title>My Post List</title>
